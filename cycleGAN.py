@@ -22,8 +22,9 @@ from IPython.display import clear_output
 from sklearn.utils import shuffle
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-X = np.load('/work/kurtlin2012/Data/X_data2.npy')
-y = np.load('/work/kurtlin2012/Data/y_data2.npy')
+out_path = ''
+X = np.load('')
+y = np.load('')
 
 val_num = X.shape[0] // 10
 X_train = X[:-val_num]
@@ -243,7 +244,7 @@ class GANMonitor(keras.callbacks.Callback):
             #)
         
         plt.show()
-        plt.savefig("/work/kurtlin2012/Model/generated_img_{epoch}.png".format(epoch=epoch + 1), dpi=350,
+        plt.savefig(out_path + "/generated_img_{epoch}.png".format(epoch=epoch + 1), dpi=350,
                     bbox_inches='tight')
         plt.close()
             
@@ -263,7 +264,7 @@ cycle_gan_model.compile(
     disc_loss_fn=discriminator_loss_fn)
 
 plotter = GANMonitor()
-checkpoint_filepath = "/work/kurtlin2012/Model/cyclegan_{epoch:03d}_{G_lo:.5f}_{F_lo:.5f}.h5"
+checkpoint_filepath = out_path + "/cyclegan_{epoch:03d}_{G_lo:.5f}_{F_lo:.5f}.h5"
 model_checkpoint_callback = keras.callbacks.ModelCheckpoint(filepath=checkpoint_filepath)
 
 train = tf.data.Dataset.from_tensor_slices((X_train, y_train)).batch(2)

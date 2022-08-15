@@ -3,7 +3,7 @@
 """
 Created on Wed Jul 29 09:03:22 2020
 
-@author: tmu
+@author: Ching-Ting Lin
 """
 
 import os
@@ -213,10 +213,10 @@ def summarize_performance(status, g_model, latent_dim, n_samples=25):
         plt.subplot(square, square, i+1)
         plt.axis('off')
         plt.imshow(X[i,:,:,0])
-    filename1 = '/home/kurtlin2012/PGGAN/plot/plot_%s.png' % (name)
+    filename1 = out_path + '/plot_%s.png' % (name)
     plt.savefig(filename1, bbox_inches='tight', dpi=300)
     plt.close()
-    filename2 = '/home/kurtlin2012/PGGAN/model/model_%s.h5' % (name)
+    filename2 = out_path + '/model_%s.h5' % (name)
     g_model.save(filename2)
     print('Plot and model saved: %s and %s' % (filename1, filename2))
 
@@ -263,7 +263,7 @@ n_blocks = 6
 # size of the latent space
 # latent_dim = 100
 # load image data
-data_ori = np.load('/work/kurtlin2012/Data/CTAori_train1.npy')
+data_ori = np.load('')
 data_ori[data_ori < 0] = 0
 dataset = np.zeros([data_ori.shape[0] * 7, data_ori.shape[1], data_ori.shape[2], data_ori.shape[4]], dtype='float32')
 for i in range(data_ori.shape[0]):

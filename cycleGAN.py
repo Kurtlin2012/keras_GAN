@@ -15,11 +15,6 @@ from tensorflow.keras.layers import (Input, Conv2D, MaxPooling2D, UpSampling2D, 
                                      BatchNormalization, Concatenate, LeakyReLU, Conv2DTranspose)
 from tensorflow.keras.initializers import RandomNormal
 import matplotlib.pyplot as plt
-import pydicom
-from skimage.transform import resize
-import time
-from IPython.display import clear_output
-from sklearn.utils import shuffle
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 out_path = ''
